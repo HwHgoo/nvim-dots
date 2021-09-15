@@ -1,0 +1,34 @@
+require('core')
+--local conf = require('config')
+--
+--require('packer').startup(function()
+--    use {
+--        'wbthomason/packer.nvim',
+--        opt = false,
+--        git = {
+--            default_url_format = 'https://github.com.cnpmjs.org/%s'
+--        }
+--    }
+--
+--    use {
+--        'windwp/nvim-autopairs',
+--        config = [[require('nvim-autopairs').setup{}]],
+--    }
+--
+--    use {
+--        'morhetz/gruvbox',
+--        config = conf.gruvbox
+--    }
+--    
+--    use {
+--        'fatih/vim-go',
+--        opt = true,
+--        config = conf.vim_go,
+--    }
+--
+--    use {
+--        'neovim/nvim-lspconfig',
+--        opt = true,
+--        config = conf.nvim_lsp,
+--    }
+--end)
