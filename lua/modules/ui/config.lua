@@ -9,27 +9,30 @@ function config.gitsigns()
 end
 
 function config.nvim_tree()
+    require('nvim-tree').setup{
+        auto_close = 1,
+        follow = 1,
+        follow_update_path = 1,
+        hide_dotfiles = 0,
+        highlight_opened_files = 1,
+        tab_open = 1,
+        lsp_diagnostics = 1,
+        disable_netrw = 1,
+        hijack_netrw = 1,
+    }
+
     local g = vim.g
-    g.nvim_tree_auto_close = 1
-    g.nvim_tree_follow = 1
-    g.nvim_tree_follow_update_path = 1
-    g.nvim_tree_hide_dotfiles = 0
-    g.nvim_tree_highlight_opened_files = 1
-    g.nvim_tree_tab_open = 1
-    g.nvim_tree_lsp_diagnostics = 1
-    g.nvim_tree_disable_netrw = 1
-    g.nvim_tree_hijack_netrw = 1
     g.nvim_tree_icons = {
         default = '',
         symlink = '',
         git = {
-            unstaged = '✗',
+            unstaged = '',
             staged = '✓',
             unmerged = '',
-            renamed = '➜',
-            untracked = '★',
+            renamed = '凜',
+            untracked = '★ ',
             deleted = '',
-            ignored = '◌'
+            ignored = '◌ ',
         },
         folder = {
             arrow_open = '',
