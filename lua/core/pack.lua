@@ -2,6 +2,7 @@ local fn = vim.fn
 local modules_dir = fn.stdpath('config')..'/lua/modules'
 local packer = nil
 local Packer = {}
+local data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
 Packer.__index = Packer
 
 function Packer:load_plugins()
@@ -49,6 +50,17 @@ function Packer:load_packer()
     end
 end
 
+function Packer:ensure_packer()
+    local packer_path = data_dir..'pack/packer/start/packer.nvim'
+    local state = vim.loop.fs_stat(packer_path)
+    if not state then
+        local cmd = '!git clone https://hub.fastgit.org/wbthomason/packer.nvim '..packer_path
+        vim.api.nvim_command(cmd)
+        self:load_packer()
+        packer.install()
+    end
+end
+
 local plugins = setmetatable({}, {
     __index = function(_, key)
         Packer:load_packer()
@@ -57,6 +69,7 @@ local plugins = setmetatable({}, {
 })
 
 function plugins.ensure_packer()
+    Packer:ensure_packer()
 end
 
 function plugins.magic_compile()

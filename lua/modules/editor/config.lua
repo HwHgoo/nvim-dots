@@ -34,4 +34,7 @@ function config.neoscroll()
     require('neoscroll').setup()
 end
 
+function config.surround()
+end
+
 return config

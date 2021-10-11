@@ -26,6 +26,7 @@ local options = {
 	tabstop = 4,
 	shiftwidth = 4,
 	scrolloff = 99,
+    clipboard = 'unnamedplus'
 }
 
 local load_options = function()

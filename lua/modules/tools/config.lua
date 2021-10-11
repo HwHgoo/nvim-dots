@@ -15,8 +15,8 @@ function config.telescope()
 
     require('telescope').setup {
         defaults = {
-            selection_caret = '',
-            prompt_prefix = '🔭',
+            selection_caret = ' ',
+            prompt_prefix = ' ',
             devicons = true
         }
     }

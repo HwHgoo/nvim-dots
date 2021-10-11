@@ -23,4 +23,10 @@ editor['karb94/neoscroll.nvim'] = {
     config = conf.neoscroll,
 }
 
+editor['tpope/vim-surround'] = {
+    opt = true,
+    event = 'BufRead',
+    config = conf.surround,
+}
+
 return editor

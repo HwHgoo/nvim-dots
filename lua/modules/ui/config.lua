@@ -22,14 +22,19 @@ function config.nvim_tree()
     }
 
     local g = vim.g
+    --g.nvim_tree_show_icons = {
+    --    git = 0,
+    --    folders = 1,
+    --    folder_arrows = 1
+    --}
     g.nvim_tree_icons = {
         default = '',
         symlink = '',
         git = {
-            unstaged = '',
             staged = '✓',
+            unstaged = '',
             unmerged = '',
-            renamed = '凜',
+            renamed = '',
             untracked = '★ ',
             deleted = '',
             ignored = '◌ ',

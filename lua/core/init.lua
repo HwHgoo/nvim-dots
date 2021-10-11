@@ -6,6 +6,7 @@ local load_core =  function()
 	require('core.options')
     require('core.mapping')
     local pack = require('core.pack')
+    pack.ensure_packer()
     pack.load_compile()
     vim.cmd [[colorscheme gruvbox]]
     require('keymap')
