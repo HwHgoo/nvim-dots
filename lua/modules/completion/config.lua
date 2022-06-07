@@ -2,27 +2,25 @@ local config = {}
 
 function config.autopairs()
     require('nvim-autopairs').setup{}
-    require('nvim-autopairs.completion.cmp').setup {
-        map_cr = true,
-        map_complete = true,
-        auto_select = true
-    }
+    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+    local cmp = require('cmp')
+    cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done( { map_char = { tex = '' } }) )
 end
 
 function config.lspconfig()
     if not packer_plugins['nvim-lspconfig'].loaded then
         vim.cmd [[packadd nvim-lspconfig]]
     end
-    if not packer_plugins['nvim-lspinstall'].loaded then
-        vim.cmd [[packadd nvim-lspinstall]]
+    if not packer_plugins['nvim-lsp-installer'].loaded then
+        vim.cmd [[packadd nvim-lsp-installer]]
     end
 
     local nvim_lsp = require('lspconfig')
-    local lsp_install = require('lspinstall')
-    lsp_install.setup()
+    local lsp_installer = require('nvim-lsp-installer')
+    lsp_installer.setup()
 
-    local servers = lsp_install.installed_servers()
-    for _, server in pairs(servers) do
+    local servers = {'sumneko_lua'}
+    for _, server in ipairs(servers) do
         if server == 'go' then
             server = 'gopls'
         end
@@ -52,16 +50,16 @@ function config.cmp()
                 select = true,
             }),
             ['<Tab>'] = function(fallback)
-                if vim.fn.pumvisible() == 1 then
-                    vim.fn.feedkeys(t('<C-n>'), 'n')
+                if cmp.visible() then
+                    cmp.select_next_item()
                 else
                     fallback()
                 end
             end,
 
             ['<S-Tab>'] = function(fallback)
-                if vim.fn.pumvisible() == 1 then
-                    vim.fn.feedkeys(t('<C-p>'), 'n')
+                if cmp.visible() then
+                    cmp.select_prev_item()
                 else
                     fallback()
                 end

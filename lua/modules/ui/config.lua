@@ -10,15 +10,15 @@ end
 
 function config.nvim_tree()
     require('nvim-tree').setup{
-        auto_close = 1,
-        follow = 1,
-        follow_update_path = 1,
-        hide_dotfiles = 0,
-        highlight_opened_files = 1,
-        tab_open = 1,
-        lsp_diagnostics = 1,
-        disable_netrw = 1,
-        hijack_netrw = 1,
+        -- auto_close = 1,
+        -- follow = 1,
+        -- follow_update_path = 1,
+        -- hide_dotfiles = 0,
+        -- highlight_opened_files = 1,
+        -- tab_open = 1,
+        -- lsp_diagnostics = 1,
+        -- disable_netrw = 1,
+        -- hijack_netrw = 1,
     }
 
     local g = vim.g

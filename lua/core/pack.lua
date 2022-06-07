@@ -36,7 +36,7 @@ function Packer:load_packer()
     end
     packer.init({
         git = {
-            default_url_format = 'https://hub.fastgit.org/%s'
+            default_url_format = 'https://github.com/%s'
         }
     })
     local use = packer.use
@@ -54,7 +54,7 @@ function Packer:ensure_packer()
     local packer_path = data_dir..'pack/packer/start/packer.nvim'
     local state = vim.loop.fs_stat(packer_path)
     if not state then
-        local cmd = '!git clone https://hub.fastgit.org/wbthomason/packer.nvim '..packer_path
+        local cmd = '!git clone https://github.com/wbthomason/packer.nvim '..packer_path
         vim.api.nvim_command(cmd)
         self:load_packer()
         packer.install()
@@ -74,8 +74,8 @@ end
 
 function plugins.magic_compile()
     plugins.compile()
-    os.remove('~/.config/nvim/plugin/packer_compiled.lua')
-    vim.api.nvim_command(':bufdo e')
+    --os.remove('~/.config/nvim/plugin/packer_compiled.lua')
+    --vim.api.nvim_command(':bufdo e')
 end
 
 function plugins.load_compile()

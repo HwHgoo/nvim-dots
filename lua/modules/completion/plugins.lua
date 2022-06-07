@@ -12,7 +12,7 @@ comp['neovim/nvim-lspconfig'] = {
     config = conf.lspconfig
 }
 
-comp['kabouzeid/nvim-lspinstall'] = {
+comp['williamboman/nvim-lsp-installer'] = {
     opt = true,
     after = 'nvim-lspconfig'
 }
