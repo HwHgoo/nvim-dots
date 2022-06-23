@@ -29,4 +29,16 @@ editor['tpope/vim-surround'] = {
     config = conf.surround,
 }
 
+editor['numToStr/Comment.nvim'] = {
+    opt = true,
+    event = 'BufRead',
+    config = conf.comment
+}
+
+editor['mhartington/formatter.nvim'] = {
+    opt = true,
+    event = 'BufRead',
+    config = conf.formatter
+}
+
 return editor

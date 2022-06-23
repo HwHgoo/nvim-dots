@@ -20,6 +20,12 @@ local plug_map = {
 
     -- NvimTree
     ['n|<leader>x'] = map_cr('NvimTreeToggle'):with_noremap(),
+
+    -- comment
+    ["n|<A-/>"] = map_cr('CommentLineToggle'):with_noremap():with_silent(),
+    ["x|<A-/>"] = map_cr('CommentLineToggle'):with_noremap():with_silent(),
+    ['n|<A-\\>'] = map_cr('CommentBlockToggle'):with_noremap():with_silent(),
+    ['x|<A-\\>'] = map_cr('CommentBlockToggle'):with_noremap():with_silent(),
 }
 
 bind.load_map(plug_map)

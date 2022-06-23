@@ -19,12 +19,24 @@ function config.lspconfig()
     local lsp_installer = require('nvim-lsp-installer')
     lsp_installer.setup()
 
-    local servers = {'sumneko_lua'}
+    local lspconf = require('modules.completion.lspconf')
+    local servers = {
+        'sumneko_lua',
+        'gopls',
+        'clangd',
+        'cmake'
+    }
+    local root_pattern = require('lspconfig/util').root_pattern
     for _, server in ipairs(servers) do
-        if server == 'go' then
-            server = 'gopls'
+        if lspconf[server] ~= nil then
+            nvim_lsp[server].setup {
+                cmd = lspconf[server]['cmd'],
+                filetyps = lspconf[server]['filetyps'],
+                root_dir = root_pattern(lspconf[server]['root_dir'])
+            }
+        else
+            nvim_lsp[server].setup{}
         end
-        nvim_lsp[server].setup{}
     end
 end
 
