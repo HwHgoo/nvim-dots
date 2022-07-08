@@ -33,9 +33,18 @@ lspconf['clangd'] = {
 }
 
 lspconf['cmake'] = {
-    [cmd] = {},
-    [filetyps] = {},
-    [root] = {},
+    [cmd] = {
+        'cmake-language-server'
+    },
+    [filetyps] = {
+        'cmake'
+    },
+    [root] = {
+        '.git',
+        '.root',
+        '.clang-format',
+        'build/'
+    },
     [single] = true
 }
 

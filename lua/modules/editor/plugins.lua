@@ -3,8 +3,8 @@ local conf = require('modules.editor.config')
 
 editor['nvim-treesitter/nvim-treesitter'] = {
     opt = true,
-    run = ':TSUpdate',
-    event = 'BufRead',
+    -- run = ':TSUpdate',
+    event = 'BufReadPre',
     config = conf.treesitter
 }
 

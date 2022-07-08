@@ -4,12 +4,14 @@ function config.rainbow()
 end
 
 function config.treesitter()
+    vim.cmd('syntax on')
     require('nvim-treesitter.configs').setup {
         ensure_installed = {'go', 'lua', 'c'},
         highlight = {
             enable = true
         },
         textobjects = {
+            enable = true,
             select = {
                 enable = true,
                 keymaps = {
@@ -25,6 +27,12 @@ function config.treesitter()
                     ["il"] = "@loop.inner",
                 }
             },
+            move = {
+                enable = true,
+                keymaps = {
+                    ["]m"] = "@function.outer",
+                }
+            }
         },
     }
 end
@@ -38,14 +46,12 @@ end
 
 function config.comment()
     require('Comment').setup()
-    print('test')
     vim.cmd [[command! CommentLineToggle lua require('Comment.api').toggle_current_linewise()]]
     vim.cmd [[command! CommentBlockToggle lua require('Comment.api').toggle_current_blockwise()]]
 end
 
 function config.formatter()
     local sl = require('formatter.filetypes.lua').stylua
-    print(vim.inspect(sl))
     require('formatter').setup{
         filetype = {
             lua = {

@@ -4,6 +4,7 @@ local conf = require('modules.tools.config')
 tools['nvim-telescope/telescope.nvim'] = {
     opt = true,
     cmd = 'Telescope',
+    event = 'BufRead',
     config = conf.telescope,
     requires = {
         {'nvim-lua/popup.nvim', opt = true},

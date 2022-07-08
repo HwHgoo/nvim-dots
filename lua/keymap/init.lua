@@ -7,6 +7,8 @@ local plug_map = {
     ['n|<leader>ff'] = map_cr('Telescope find_files'):with_noremap(),
     ['n|<leader>fp'] = map_cr('Telescope project'):with_noremap():with_silent(),
     ['n|<leader>fb'] = map_cr('Telescope file_browser'):with_noremap():with_silent(),
+    ['n|<leader>fl'] = map_cr('Telescope live_grep'):with_noremap():with_silent(),
+    ['n|<leader>fh'] = map_cr('Telescope help_tags'):with_noremap():with_silent(),
 
     -- lsp
     ['n|gd'] = map_cmd('<cmd>lua vim.lsp.buf.definition()<CR>'),
