@@ -25,9 +25,7 @@ local options = {
 	expandtab = true,
 	tabstop = 4,
 	shiftwidth = 4,
-	scrolloff = 99,
     clipboard = 'unnamedplus',
-    syntax = 'on',
 }
 
 local load_options = function()

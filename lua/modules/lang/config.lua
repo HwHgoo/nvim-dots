@@ -12,4 +12,8 @@ function config.vim_go()
     g.go_fmt_command = "goimports"
 end
 
+function config.nvim_go()
+    require('go').setup()
+end
+
 return config

@@ -4,37 +4,14 @@ function config.rainbow()
 end
 
 function config.treesitter()
-    vim.cmd('syntax on')
     require('nvim-treesitter.configs').setup {
         ensure_installed = {'go', 'lua', 'c'},
         highlight = {
             enable = true
         },
-        textobjects = {
-            enable = true,
-            select = {
-                enable = true,
-                keymaps = {
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ac"] = "@class.outer",
-                    ["ic"] = "@class.inner",
-                    ["ab"] = "@block.outer",
-                    ["ib"] = "@block.inner",
-                    ["ao"] = "@condition.outer",
-                    ["io"] = "@condition.inner",
-                    ["al"] = "@loop.outer",
-                    ["il"] = "@loop.inner",
-                }
-            },
-            move = {
-                enable = true,
-                keymaps = {
-                    ["]m"] = "@function.outer",
-                }
-            }
-        },
     }
+
+    vim.cmd [[syntax on]]
 end
 
 function config.neoscroll()
@@ -59,6 +36,14 @@ function config.formatter()
             }
         }
     }
+end
+
+function config.center()
+    require('stay-centered')
+end
+
+function config.hop()
+    require('hop').setup()
 end
 
 return config

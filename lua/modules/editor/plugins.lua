@@ -20,7 +20,7 @@ editor['nvim-treesitter/nvim-treesitter-textobjects'] = {
 
 editor['karb94/neoscroll.nvim'] = {
     opt = false,
-    config = conf.neoscroll,
+     config = conf.neoscroll,
 }
 
 editor['tpope/vim-surround'] = {
@@ -39,6 +39,11 @@ editor['mhartington/formatter.nvim'] = {
     opt = true,
     event = 'BufRead',
     config = conf.formatter
+}
+
+editor['phaazon/hop.nvim'] = {
+    opt = false,
+    config = conf.hop,
 }
 
 return editor

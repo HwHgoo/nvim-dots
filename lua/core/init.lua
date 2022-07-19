@@ -8,7 +8,7 @@ local load_core =  function()
     local pack = require('core.pack')
     pack.ensure_packer()
     pack.load_compile()
-    vim.cmd [[colorscheme gruvbox]]
+    vim.cmd [[colorscheme gruvbox-material]]
     require('keymap')
 end
 load_core()

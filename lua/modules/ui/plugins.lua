@@ -5,6 +5,10 @@ ui['morhetz/gruvbox'] = {
     opt = true
 }
 
+ui['sainnhe/gruvbox-material'] = {
+    opt = false,
+}
+
 ui['kyazdani42/nvim-web-devicons'] = {}
 
 --ui['lewis6991/gitsigns.nvim'] = {

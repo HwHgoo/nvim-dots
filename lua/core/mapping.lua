@@ -19,40 +19,46 @@ local mapping = {
     ['n|<leader>k'] = map_cmd('<C-w>k'):with_noremap(),
     ['n|<leader>H'] = map_cmd('<C-w>H'):with_noremap(),
     ['n|<leader>L'] = map_cmd('<C-w>L'):with_noremap(),
-    ['n|G'] = map_cmd('Gzz'):with_noremap(),
 
     -- insert mode
     ['i|jj'] = map_cmd('<RIGHT>'):with_noremap(),
     ['i|hh'] = map_cmd('<LEFT>'):with_noremap(),
     ['i|;;'] = map_cmd('<ESC>A'):with_noremap(),
+
+    -- visual mode
+    ['x|v'] = map_cmd('<ESC>^vg_'):with_noremap(),
 }
 
 
 bind.load_map(mapping)
 
-local function StayCenter(inInsert)
-    local line, _ = unpack(getCursor(0))
+local function center(insertMode)
+    local pos = vim.fn.getcurpos()
+    local line = pos[2]
+    local col = pos[3]
+
     if line ~= vim.b.last_line then
-        vim.cmd('norm! zz')
+        vim.cmd [[norm! zz]]
         vim.b.last_line = line
-        if inInsert then
-            local column = vim.fn.getcurpos()[5]
-            vim.fn.cursor(line, column)
+
+        if insertMode then
+            vim.fn.cursor(line, col)
         end
     end
 end
 
-local group = ag('StayCenter', {clear = true});
-ac('CursorMovedI', {
+local group = ag('center', {clear = true})
+ac('CursorMoved', {
     group = group,
-    callback = function()
-        StayCenter(true)
+    callback = function ()
+        center(false)
     end
 })
 
-ac('CursorMoved', {
+ac('CursorMovedI', {
     group = group,
-    callback = function()
-        StayCenter(false)
+    callback = function ()
+        center(true)
     end
 })
+
